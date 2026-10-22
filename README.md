@@ -1,40 +1,7 @@
-# AlertNews
-
-Professional Forex & Index News Alert App (Free & Open Source)
-
-Real-time financial news and economic calendar alerts for forex & index traders.
-
-## Features
-- Live news alerts (Trump, Fed, NFP, CPI, War, Gold, Oil, DXY, etc.)
-- Forex Factory style economic calendar
-- Push notifications for high-impact events
-- Import news from social/RSS sources (configurable)
-- 100% Free — no paid signal bot
-
-## Project Structure
-```
-alertnews/
-├── app/
-│   ├── src/main/java/com/alertnews/app/
-│   │   ├── MainActivity.java
-│   │   ├── NewsAdapter.java
-│   │   ├── NotificationService.java
-│   │   └── CalendarFragment.java
-│   ├── src/main/res/
-│   │   ├── layout/
-│   │   ├── values/
-│   │   └── drawable/
-│   └── AndroidManifest.xml
-├── build.gradle
-├── settings.gradle
-└── gradle.properties
-```
-
-## Setup
-1. Clone repo: `git clone https://github.com/<your-username>/alertnews`
-2. Open in Android Studio
-3. Build APK: `./gradlew assembleDebug`
-
-## License
-MIT — Free to use and modify.# alertnews
 # alertnews
+
+Forex & Index News Alert App (Free & Open Source)
+
+Real-time financial news, economic calendar, IPO tracking.
+
+Co-Authored-By: Claude Code <noreply@anthropic.com>
