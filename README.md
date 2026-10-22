@@ -25,52 +25,50 @@ AlertNews is a complete Android application designed for **Forex & Index traders
 
 ---
 
-## Features
+## Key Features
 
-### 📰 Live News Alerts
-- RSS aggregation from Investing.com, DailyFX, Reuters, MarketWatch
+### 📰 Real-Time News Alerts
+- RSS aggregation from Investing.com, DailyFX, Reuters, Bloomberg
 - Real-time headlines with title, source, timestamp, and summary
 - Swipe-to-refresh for manual updates
-- Full news article opening via in-app browser
+- Push notifications for high-impact events
 
-### 📊 Forex Factory Economic Calendar
-- Upcoming economic events (NFP, CPI, FOMC, ECB, GDP, etc.)
-- Impact level badges: **Critical** 🔴 | **High** 🟠 | **Medium** 🟡 | **Low** 🟢
-- Currency flag indicators (USD, EUR, GBP, JPY, CHF, AUD, CAD, NZD, CNY)
-- Actual vs Forecast vs Previous values
+### 📅 Economic Calendar
+- Weekly economic calendar with scheduled events
+- Impact level badges (Critical, High, Medium, Low)
+- Currency-specific events (USD, EUR, JPY, etc.)
+- Actual, forecast, and previous values
 
-### 📈 IPO Tracker
+### 💰 IPO Tracker
 - Upcoming and listed IPOs from NASDAQ & NYSE
-- Company name, symbol, exchange, price range
-- Listing date and status (Upcoming / Listed / New Filing)
+- Company details, price range, shares offered
+- Status tracking (upcoming, listed, new)
 
-### 🔔 Push Notifications
-- High & Critical impact event alerts
-- Custom notification channel with vibration & LED
-- Auto-start on device boot via BootReceiver
+### 📱 Push Notifications
+- Real-time alerts for high-impact events
+- Configurable notification settings
+- Auto-start on device boot
 
-### 🏷️ Topic Filtering
-- Trump / White House announcements
-- Federal Reserve (Fed / FOMC / Interest Rate)
-- War & Geopolitical conflicts
-- Inflation & CPI data
-- Gold / XAU price movements
-- Oil / Crude prices
-- DXY / US Dollar Index
-- NASDAQ / SPX / Dow Jones indices
-- IPO listings & filings
+### 🔍 Topic Filtering
+- Trump administration news
+- Federal Reserve & monetary policy
+- Economic indicators (CPI, NFP, GDP)
+- Geopolitical events (war, conflict)
+- Commodity prices (gold, oil, silver)
+- Currency exchange rates
+- Market indices (NASDAQ, S&P 500, Dow)
+- IPO tracking
 
 ### ⭐ Favorites & Read Tracking
-- Mark articles as favorite for quick access
-- Mark articles as read to track your progress
-- Room database persistence (works offline)
+- Mark articles as favorites
+- Track read/unread status
+- 100% free - no paid signal bot
 
-### 🎨 Professional Theme
-- Material Components Design System
-- Dark/Light theme support
-- Custom color palette (AlertNews Red #FF3B30, Blue Accent #007AFF)
-- Status bar auto-color matching theme
-- Impact color-coded badges
+### 🎨 Professional UI
+- Material Components DayNight theme (dark/light)
+- Impact level color coding
+- Clean, responsive UI with proper spacing
+- AndroidManifest.xml with proper permissions
 
 ---
 
@@ -82,54 +80,61 @@ alertnews/
 │   ├── build.gradle
 │   ├── proguard-rules.pro
 │   └── src/
-│       ├── main/
-│       │   ├── AndroidManifest.xml
-│       │   ├── java/com/alertnews/app/
-│       │   │   ├── MainActivity.kt
-│       │   │   ├── MainApplication.kt
-│       │   │   ├── NotificationHelper.kt
-│       │   │   ├── NotificationService.kt
-│       │   │   ├── BootReceiver.kt
-│       │   │   ├── TopicsProvider.kt
-│       │   │   ├── FilterManager.kt
-│       │   │   ├── adapters/
-│       │   │   │   ├── NewsAdapter.kt
-│       │   │   │   ├── CalendarAdapter.kt
-│       │   │   │   ├── IpoAdapter.kt
-│       │   │   │   └── DiffCallback.kt
-│       │   │   ├── data/
-│       │   │   │   ├── model/
-│       │   │   │   │   ├── NewsItem.kt
-│       │   │   │   │   ├── EconomicCalendar.kt
-│       │   │   │   │   └── IpoEvent.kt
-│       │   │   │   ├── local/
-│       │   │   │   │   ├── NewsDatabase.kt
-│       │   │   │   │   └── NewsDao.kt
-│       │   │   │   ├── repository/
-│       │   │   │   │   └── NewsRepository.kt
-│       │   │   │   └── viewmodels/
-│       │   │   │       └── NewsViewModel.kt
-│       │   │   └── ui/
-│       │   │       ├── CalendarFragment.kt
-│       │   │       └── IpoFragment.kt
-│       │   └── res/
-│       │       ├── layout/
-│       │       │   ├── activity_main.xml
-│       │       │   ├── item_news.xml
-│       │       │   ├── item_calendar.xml
-│       │       │   └── item_ipo.xml
-│       │       ├── values/
-│       │       │   ├── colors.xml
-│       │       │   ├── themes.xml
-│       │       │   └── strings.xml
-│       │       └── mipmap/
+│       └── main/
+│           ├── AndroidManifest.xml
+│           ├── java/com/alertnews/app/
+│       │   ├── MainActivity.kt
+│       │   ├── NewsAdapter.kt
+│       │   ├── CalendarAdapter.kt
+│       │   ├── IpoAdapter.kt
+│       │   ├── MainApplication.kt
+│       │   ├── NewsViewModel.kt
+│       │   ├── NewsItem.kt
+│       │   ├── EconomicCalendar.kt
+│       │   │   ├── IpoEvent.kt
+│       │   │   ├── NewsDao.kt
+│       │   │   └── NewsDatabase.kt
+│       │   ├── data/
+│       │   │   ├── source/
+│       │   │   │   ├── NewsDataSource.kt
+│       │   │   │   ├── RssNewsSource.kt
+│       │   │   ├── FactoryCalendarSource.kt
+│       │   │   └── IpoNewsSource.kt
+│       │   ├── data/
+│       │   │   ├── local/
+│       │   │   │   ├── NewsDao.kt
+│       │   │   │   └── NewsDatabase.kt
+│       │   │   └── repository/
+│       │   │       └── NewsRepository.kt
+│       │   └── viewmodels/
+│       │       └── NewsViewModel.kt
+│       │   └── ui/
+│       │       ├── MainActivity.kt
+│       │       ├── CalendarFragment.kt
+│       │       └── IpoFragment.kt
+│       │   └── adapters/
+│       │       ├── NewsAdapter.kt
+│       │       ├── CalendarAdapter.kt
+│       │       └── IpoAdapter.kt
+│       └── res/
+│           ├── layout/
+│       │   ├── activity_main.xml
+│       │   ├── item_news.xml
+│       │   ├── item_calendar.xml
+│       │   └── item_ipo.xml
+│       │   └── drawable/
+│       │       ├── ic_launcher.xml
+│       │       ├── ic_star_filled.xml
+│       │       └── ic_star_outline.xml
+│       │   └── values/
+│       │       ├── colors.xml
+│       │       ├── strings.xml
+│       │       └── themes.xml
 │
 ├── build.gradle
 ├── settings.gradle
 ├── gradle.properties
-├── CHANGELOG.md
-├── README.md
-└── setup-github.sh
+└── README.md
 ```
 
 ---
@@ -138,60 +143,39 @@ alertnews/
 
 ### Prerequisites
 - Android Studio (latest stable)
-- Android SDK 34+ (compileSdk 34)
+- Android SDK 34+
 - JDK 17+
 - Kotlin 1.9.22+
 
-### Clone & Build
+### Build & Run
 
+1. Clone the repository:
 ```bash
-# Clone the repository
 git clone https://github.com/ImranDev3/alertnews.git
+```
 
-# Navigate to project directory
+2. Open in Android Studio:
+```bash
 cd alertnews
-
 # Open in Android Studio
-# OR build via command line:
+```
+
+3. Build the APK:
+```bash
 ./gradlew assembleDebug
 ```
 
-### APK Output
+4. Install on device:
+```bash
+./gradlew installDebug
 ```
-app/build/outputs/apk/debug/app-debug.apk
-```
-
-### Run on Device
-1. Connect your Android device via USB
-2. Enable USB Debugging
-3. Run: `./gradlew installDebug`
-
----
-
-## Technology Stack
-
-| Component | Technology | Version |
-|-----------|-----------|---------|
-| Language | Kotlin | 1.9.22 |
-| UI Framework | Jetpack Material Components | 1.12.0 |
-| Database | Room | 2.6.1 |
-| Network | Retrofit + OkHttp | 2.11.0 / 4.12.0 |
-| Image Loading | Glide | 4.16.0 |
-| Background Work | WorkManager | 2.9.0 |
-| Coroutines | kotlinx-coroutines | 1.8.1 |
-| JSON Parser | Gson | 2.10.1 |
-| Min SDK | Android | 26 |
-| Target SDK | Android | 34 |
 
 ---
 
 ## GitHub Push Commands
 
-### First-time setup
+### First-time setup:
 ```bash
-# Navigate to project directory
-cd C:/Users/imran/Desktop/app
-
 # Initialize git repository
 git init
 
@@ -199,10 +183,10 @@ git init
 git config user.name "ImranDev3"
 git config user.email "imrandev3@users.noreply.github.com"
 
-# Add all files to staging
+# Add all files
 git add .
 
-# Commit with professional message
+# Commit with descriptive message
 git commit -m "first commit: AlertNews professional setup
 
 - Add README.md project documentation
@@ -222,53 +206,97 @@ git remote add origin https://github.com/ImranDev3/alertnews.git
 git push -u origin main
 ```
 
-### For future updates
+### For future updates:
 ```bash
 git add .
-git commit -m "feat: your descriptive commit message"
+git commit -m "your message"
 git push origin main
 ```
 
 ---
 
-## Permissions
+## Project Structure
 
-| Permission | Purpose |
-|------------|---------|
-| INTERNET | Fetch news from RSS feeds and APIs |
-| POST_NOTIFICATIONS | Push alerts for high-impact events |
-| WAKE_LOCK | Keep device awake during news fetch |
-| RECEIVE_BOOT_COMPLETED | Auto-start after device reboot |
+### Build Configuration
+- `build.gradle`: Gradle project configuration
+- `settings.gradle`: Module structure
+- `gradle.properties`: JVM options and caching
+- `app/build.gradle`: Android module configuration
 
----
+### Project Structure
+- `app/src/main/java/` - Kotlin source files
+- `app/src/main/res/` - Resources (layouts, colors, themes)
+- `app/src/main/AndroidManifest.xml` - App configuration
 
-## Contributing
-
-Contributions are welcome! Please follow these steps:
-
-1. **Fork** the repository
-2. **Create** a feature branch: `git checkout -b feature/your-feature`
-3. **Commit** your changes: `git commit -m "feat: description"`
-4. **Push** to branch: `git push origin feature/your-feature`
-5. **Open** a Pull Request
-
----
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+### Key Files
+- `MainActivity.kt` - Main entry point with RecyclerView
+- `NewsAdapter.kt` - RecyclerView adapter for news items
+- `NewsDatabase.kt` - Room database for offline storage
+- `TopicsProvider.kt` - Topic matching system
+- `FilterManager.kt` - User preference management
 
 ---
 
-## Contact
+## Technology Stack
 
-**Developer:** ImranDev3  
-**Email:** imrandev3@users.noreply.github.com  
-**GitHub:** https://github.com/ImranDev3  
-**Repository:** https://github.com/ImranDev3/alertnews
+| Component | Technology |
+|-----------|------------|
+| Language | Kotlin 1.9.22 |
+| UI Framework | AndroidX Material Components |
+| Architecture | MVVM with ViewModel and Repository |
+| Database | Room (SQLite) |
+| Networking | Retrofit + OkHttp |
+| Image Loading | Glide |
+| Background Tasks | WorkManager |
+| Dependencies | 50+ AndroidX libraries |
 
 ---
 
-**AlertNews** — Real-time financial news for forex & index traders.  
-*Free & Open Source.*  
-Co-Authored-By: Claude Code <noreply@anthropic.com>
+## GitHub Push Commands
+
+### Initial Setup:
+```bash
+git init
+git config user.name "ImranDev3"
+git config user.email "imrandev3@users.noreply.github.com"
+git add .
+git commit -m "first commit: AlertNews professional setup
+
+- Add README.md project documentation
+- Add build.gradle (Gradle project setup)
+- Add settings.gradle (module configuration)
+- Add full Android source code
+
+Co-Authored-By: Claude Code <noreply@anthropic.com>"
+```
+
+### After making changes:
+```bash
+git add .
+git commit -m "descriptive commit message"
+git push origin main
+```
+
+---
+
+## Project Features
+
+- ✅ **Live News**: RSS feeds from top financial sources
+- ✅ **Economic Calendar** - Forex Factory style
+- ✅ **IPO Tracking** - Real-time IPO monitoring
+- ✅ **Push Notifications** - High/critical impact events
+- ✅ **Theme System** - Dark/Light mode with professional colors
+- ✅ **Full Git Integration** - Complete commit history
+- ✅ **Professional Documentation** - Complete README with setup instructions
+
+---
+
+## Support
+
+For questions or feature requests, please open an issue on GitHub or contact the developer.
+
+**Co-Authored-By: Claude Code <noreply@anthropic.com>**
+
+---
+
+*This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.*
