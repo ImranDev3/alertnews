@@ -13,6 +13,7 @@ import com.alertnews.app.viewmodels.NewsViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
 import com.alertnews.app.databinding.FragmentCalendarBinding
+import androidx.recyclerview.widget.LinearLayoutManager
 
 class CalendarFragment : Fragment() {
 
@@ -36,7 +37,7 @@ class CalendarFragment : Fragment() {
 
         adapter = CalendarAdapter()
         binding.calendarRecycler.adapter = adapter
-        binding.calendarRecycler.layoutManager = androidx.recyclerview.widgetergedScroller(requireContext())
+        binding.calendarRecycler.layoutManager = LinearLayoutManager(requireContext())
 
         viewModel.calendarEvents.observe(viewLifecycleOwner) { events ->
             adapter.submitList(events)

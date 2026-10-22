@@ -1,116 +1,179 @@
-# Changelog
+# AlertNews - Android Forex & Index News Alert App
 
-All notable changes to the AlertNews project will be documented in this file.
+## Overview
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+AlertNews is a free and open-source Android application for forex and index traders. Get real-time news alerts, track economic calendar events, monitor IPO launches, and stay on top of market sessions with a beautiful modern UI.
 
-## [1.0.0] - 2024-10-22
+## Features
 
-### Added - PHASE 1: Build Configuration
-- Top-level build.gradle with Kotlin plugin configuration
-- settings.gradle with module definition and repository management
-- gradle.properties with JVM arguments and caching enabled
-- app/build.gradle with Android configuration (compileSdk 34, Kotlin 17)
-- All dependencies: Room, Retrofit, OkHttp, Glide, WorkManager, Navigation
-- proguard-rules.pro with library keep rules
+### News & Alerts
+- Real-time breaking news for forex & index traders
+- Push notifications for high-impact economic events
+- Source aggregation: RSS feeds from Investing.com, DailyFX, Reuters, MarketWatch
+- Forex Factory calendar integration
+- NASDAQ IPO tracking
+- Topic filtering A-Z (18 topics including Trump, Fed, War, Inflation/CPI, NFP/Jobs, GDP, Gold/XAU, Oil/Crude, DXY/Dollar, NASDAQ, SPX/S&P500, Dow Jones, IPO, Central Banks, Economy, Politics, Crypto, Market Crash, Bailout/Stimulus, China)
 
-### Added - PHASE 2: Data Models
-- NewsItem.kt: Room entity with full field mapping (title, summary, source, url, imageUrl, publishedAt, impactLevel, symbol, currency, category, eventType, topics, isRead, isFavorite)
-- EconomicCalendar.kt: Forecast/actual fields with date parsing and impact level tracking
-- IpoEvent.kt: Company name, symbol, exchange, price range, listing status
-- DiffCallback implementations for RecyclerView optimization
+### Economic Calendar
+- Forex Factory style economic calendar
+- Real-time event data with actual/forecast/previous values
+- Price impact indicators (Critical/High/Medium/Low)
+- Filter by currency and impact level
+- Countdown timer until event
 
-### Added - PHASE 3: Data Layer
-- NewsDatabase.kt: Room database with two entities (news_items, calendar_events)
-- NewsDao.kt: Full SQL queries for CRUD operations, filters, favorites, recent news
-- NewsDataSource interface: Pattern for remote feed integration
-- RssNewsSource.kt: RSS/Atom feed parsing from Investing.com, DailyFX, Reuters, MarketWatch
-- FactoryCalendarSource.kt: Forex Factory weekly calendar JSON parsing
-- IpoNewsSource.kt: NASDAQ/NYSE IPO tracking with fallback data
+### Market Sessions
+- Trading session times: Sydney, Tokyo, London, New York, Los Angeles
+- Session status display (active/inactive)
+- Market hours in user's timezone
 
-### Added - PHASE 4: Repository & ViewModel
-- NewsRepository.kt: StateFlow for live updates, auto-refresh on creation
-- NewsViewModel.kt: AndroidViewModel with coroutine scope
+### User Settings
+- Enable/disable push notifications
+- High impact alerts only filter
+- Custom topic filtering with checkboxes A-Z
+- Dark mode / Light mode toggle
+- Background music with volume control
+- Custom music URL support
+- Symbol filter (comma-separated)
+- Currency pair filter
+- Favorites-only mode
+- Auto-refresh interval (minutes)
+- Timezone selection
 
-### Added - PHASE 5: UI Components
-- MainActivity.kt: RecyclerView with swipe refresh, FAB add source
-- NewsAdapter.kt: ViewBinding, impact badges, symbol tags, favorite toggle
-- CalendarAdapter.kt: Economic event items with color-coded impact
-- IpoAdapter.kt: IPO cards with price range display
-- Layout files: activity_main.xml, item_news.xml, item_calendar.xml, item_ipo.xml
+### Notifications
+- Custom notification channels with priority levels
+- Impact-based notification importance (Critical/High/Medium/Low)
+- Foreground service for persistent alerts
+- Auto-start after device reboot
 
-### Added - PHASE 6: Resources
-- colors.xml: AlertNews red (#FF3B30), blue accent (#007AFF), neutral tones
-- themes.xml: MaterialComponents.DayNight.NoActionBar with status bar auto-color
-- strings.xml: All user-facing strings
-- AndroidManifest.xml: Permissions (INTERNET, POST_NOTIFICATIONS, WAKE_LOCK, RECEIVE_BOOT_COMPLETED)
+### Music Player
+- Optional background ambient music
+- Volume control seek bar
+- Enable/disable toggle
+- Custom music URL input
+- Persist settings across app launches
 
-### Added - PHASE 7: Theme & UI Polish
-- Full dark/light theme support via MaterialComponents
-- Impact level badges: critical (red), high (orange), medium (yellow), low (green)
-- TopicsProvider.kt: Trump, Fed, Inflation, Conflict, Gold, Oil, DXY, NASDAQ, IPO tracking
-- FilterManager.kt: User preferences persistence
-- NotificationHelper.kt: Push notifications with channels, lights, vibration
-- BootReceiver.kt: Auto-start after device reboot
+## Project Structure
 
-### Performance
-- Uses Room with indices for fast queries
-- StateFlow for reactive UI updates
-- OkHttp with 15s timeouts
-- Glide for efficient image loading
+```
+alertnews/
+├── app/
+│   ├── src/
+│   │   ├── main/
+│   │   │   ├── java/com/alertnews/app/
+│   │   │   │   ├── MainActivity.kt
+│   │   │   │   ├── NewsViewModel.kt
+│   │   │   │   ├── MainApplication.kt
+│   │   │   │   ├── MusicPlayer.kt
+│   │   │   │   ├── NotificationHelper.kt
+│   │   │   │   ├── NotificationService.kt
+│   │   │   │   ├── BootReceiver.kt
+│   │   │   │   ├── SettingsFragment.kt
+│   │   │   │   ├── TopicsProvider.kt
+│   │   │   │   ├── FilterManager.kt
+│   │   │   │   ├── ui/
+│   │   │   │   │   ├── CalendarFragment.kt
+│   │   │   │   │   ├── IpoFragment.kt
+│   │   │   │   │   ├── TopicAdapter.kt
+│   │   │   │   │   ├── NewsAdapter.kt
+│   │   │   │   │   ├── CalendarAdapter.kt
+│   │   │   │   │   ├── IpoAdapter.kt
+│   │   │   │   │   └── DiffCallback.kt
+│   │   │   │   ├── data/
+│   │   │   │   │   ├── model/
+│   │   │   │   │   │   ├── NewsItem.kt
+│   │   │   │   │   │   ├── EconomicCalendar.kt
+│   │   │   │   │   │   ├── ForecastEvent.kt
+│   │   │   │   │   │   ├── MarketSession.kt
+│   │   │   │   │   │   └── UserSettings.kt
+│   │   │   │   │   ├── repository/
+│   │   │   │   │   │   └── NewsRepository.kt
+│   │   │   │   │   ├── source/
+│   │   │   │   │   │   ├── NewsDataSource.kt
+│   │   │   │   │   │   ├── RssNewsSource.kt
+│   │   │   │   │   │   ├── FactoryCalendarSource.kt
+│   │   │   │   │   │   └── IpoNewsSource.kt
+│   │   │   │   │   └── local/
+│   │   │   │   │       ├── NewsDatabase.kt
+│   │   │   │   │       └── NewsDao.kt
+│   │   │   │   └── util/
+│   │   │   │       └── TimezoneUtil.kt
+│   │   │   └── res/
+│   │       ├── layout/
+│   │       │   ├── activity_main.xml
+│       │       ├── fragment_settings.xml
+│       │       ├── fragment_calendar.xml
+│       │       ├── fragment_ipo.xml
+│       │       ├── item_news.xml
+│       │       ├── item_calendar.xml
+│       │       ├── item_ipo.xml
+│       │       └── item_topic.xml
+│       ├── values/
+│       │   ├── colors.xml
+│       │   ├── themes.xml
+│       │   └── strings.xml
+│       └── drawable/
+│           ├── ic_star_filled.xml
+│           ├── ic_star_outline.xml
+│           ├── ic_add.xml
+│           ├── ic_notification.xml
+│           ├── ic_music_note.xml
+│           └── ic_music.xml
+├── build.gradle
+├── settings.gradle
+└── gradle.properties
+```
 
----
+## Technology Stack
 
-## [Unreleased]
+- **Language**: Kotlin 1.9.22
+- **IDE**: Android Studio
+- **Build System**: Gradle (compileSdk 34, minSdk 26, targetSdk 34)
+- **Architecture**: MVVM with Jetpack components
+- **UI**: Jetpack Compose (Material Components DayNight theme)
+- **Database**: Room
+- **Networking**: Retrofit + OkHttp
+- **Image Loading**: Glide
+- **Background Work**: WorkManager, Coroutines
+- **Navigation**: Jetpack Navigation Component
+- **Dependency Injection**: Manual (Application class)
+- **Notifications**: NotificationManager with custom channels
+- **Timezone Handling**: Custom TimezoneUtil
 
-### Planned
-- [ ] Firebase Cloud Messaging for push notifications
-- [ ] Widget support
-- [ ] Dark mode toggle in settings
-- [ ] Custom RSS feed manager
-- [ ] Email alert subscription
-- [ ] Historical news archive
-
----
-
-## GitHub Push Commands (Step by Step)
+## Git Setup
 
 ```bash
-# Initialize git repository (if not already)
 git init
-
-# Configure Git user (only needed once per computer)
 git config user.name "ImranDev3"
-git config user.email "imrandev3@users.noreply.github.com"
-
-# Add all files to staging area
+git config user.email "dev@alertnews.app"
 git add .
-
-# Commit with descriptive message
-git commit -m "feat: full project - add all source files, UI, theme, notifications
-
-- Add build.gradle, settings.gradle, gradle.properties
-- Add Data models: NewsItem, EconomicCalendar, IpoEvent
-- Add Data layer: Repository, DAO, DataSources (RSS, Calendar, IPO)
-- Add UI: Activity, Adapters, Layout files
-- Add Resources: colors, themes, strings
-- Add Notifications: Helper, Service, BootReceiver
-- Add Theme system with dark/light support
-- Add TopicsProvider and FilterManager
-
-Co-Authored-By: Claude Code <noreply@anthropic.com>"
-
-# Set main branch as default
+git commit -m "Initial commit: AlertNews professional setup"
 git branch -M main
-
-# Add GitHub remote (if not already added)
 git remote add origin https://github.com/ImranDev3/alertnews.git
-
-# Push to GitHub
 git push -u origin main
-
-# Verify remote
-git remote -v
-git log --oneline -n 3
 ```
+
+## Development Progress
+
+This project is built incrementally with detailed commit messages following the conventional commit format. Each phase adds new functionality while maintaining backward compatibility.
+
+### Recent Changes
+
+- **Phase 1**: Project setup, Gradle configuration, initial README
+- **Phase 2**: News model, Room database, NewsDao, basic RSS fetching
+- **Phase 3**: Forex Factory calendar, IPO tracking, Topic system
+- **Phase 4**: Market sessions, Timezone support, Notification system
+- **Phase 5**: Music player, User settings, FilterManager
+- **Phase 6**: Settings Fragment, topic filtering, timezone selector, drawable resources
+
+## Contributing
+
+This is a free and open-source project. Contributions are welcome! Please see the issue tracker on GitHub for feature requests and bug reports.
+
+## License
+
+MIT License - Free for personal and commercial use.
+
+## Contact
+
+- Email: dev@alertnews.app
+- GitHub: https://github.com/ImranDev3/alertnews

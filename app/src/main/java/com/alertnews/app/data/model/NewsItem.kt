@@ -7,8 +7,7 @@ import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 /**
- * A single news headline/alert. One row per article, cached in Room so the
- * UI can render instantly on cold start.
+ * A single news headline/alert. One row per article.
  */
 @Entity(
     tableName = "news_items",
@@ -36,7 +35,6 @@ data class NewsItem(
     @SerializedName("isFavorite") val isFavorite: Boolean = false
 ) : Serializable {
 
-    /** Comma separated topic list, e.g. "Fed,Inflation / CPI". */
     val topicList: List<String>
         get() = if (topics.isBlank()) emptyList() else topics.split(",").map { it.trim() }
 
@@ -49,8 +47,5 @@ data class NewsItem(
         const val TYPE_NEWS = "news"
         const val TYPE_IPO = "ipo"
         const val TYPE_CALENDAR = "calendar"
-
-        /** Impact levels that should raise an immediate push notification. */
-        val ALERTING_LEVELS = setOf(IMPACT_CRITICAL, IMPACT_HIGH)
     }
 }

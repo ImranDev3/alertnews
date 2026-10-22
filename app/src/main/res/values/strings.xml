@@ -12,4 +12,74 @@
     <string name="high_impact">High Impact</string>
     <string name="no_news">No news available</string>
     <string name="pull_to_refresh">Pull to refresh</string>
+
+    <!-- Settings strings -->
+    <string name="settings_title">Settings</string>
+    <string name="notifications_section">Notifications</string>
+    <string name="enable_notifications">Enable Push Notifications</string>
+    <string name="enable_notifications_desc">Receive real-time alerts for high-impact news</string>
+    <string name="high_impact_alerts">High Impact Alerts Only</string>
+    <string name="high_impact_alerts_desc">Only notify for critical and high impact events</string>
+    <string name="topic_alerts">Topic Alerts</string>
+    <string name="topic_alerts_desc">Choose which topics trigger notifications</string>
+
+    <string name="appearance_section">Appearance</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="dark_mode_desc">Use dark theme (requires app restart)</string>
+    <string name="show_market_sessions">Show Market Sessions</string>
+    <string name="show_market_sessions_desc">Display trading session times on home screen</string>
+    <string name="timezone">Timezone</string>
+    <string name="timezone_desc">Display times in your local timezone</string>
+    <string name="timezone_hint">Select timezone</string>
+
+    <string name="music_section">Background Music</string>
+    <string name="enable_music">Enable Background Music</string>
+    <string name="enable_music_desc">Play ambient music while using the app</string>
+    <string name="music_volume">Music Volume</string>
+    <string name="music_url">Custom Music URL</string>
+    <string name="music_url_desc">Enter a direct URL to an MP3 stream</string>
+    <string name="music_url_hint">https://example.com/music.mp3</string>
+
+    <string name="filters_section">Filters</string>
+    <string name="symbol_filter">Symbol Filter</string>
+    <string name="symbol_filter_desc">Filter news by trading symbols (comma separated)</string>
+    <string name="symbol_filter_hint">XAUUSD, US30, NAS100, SPX500</string>
+    <string name="currency_filter">Currency Filter</string>
+    <string name="currency_filter_desc">Filter by currency pairs</string>
+    <string name="currency_filter_hint">USD, EUR, GBP, JPY</string>
+    <string name="show_favorites_only">Show Favorites Only</string>
+    <string name "show_favorites_only_desc">Display only favorited news items</string>
+
+    <string name="general_section">General</string>
+    <string name="auto_refresh">Auto Refresh Interval</string>
+    <string name="auto_refresh_desc">How often to fetch new data (minutes)</string>
+    <string name="clear_cache">Clear Cache</string>
+    <string name="clear_cache_desc">Remove all cached news and calendar data</string>
+    <string name="about">About AlertNews</string>
+    <string name="version">Version 1.0.0</string>
+    <string name="contact_email">Contact: dev@alertnews.app</string>
+    <string name="github_repo">GitHub: github.com/ImranDev3/alertnews</string>
+    <string name="open_source_notice">Free & Open Source - Built for Traders</string>
+
+    <!-- Topic names -->
+    <string name="topic_trump">Trump</string>
+    <string name="topic_fed">Fed</string>
+    <string name="topic_war">War</string>
+    <string name="topic_inflation">Inflation/CPI</string>
+    <string name="topic_nfp">NFP/Jobs</string>
+    <string name="topic_gdp">GDP</string>
+    <string name="topic_gold">Gold/XAU</string>
+    <string name="topic_oil">Oil/Crude</string>
+    <string name="topic_dxy">DXY/Dollar</string>
+    <string name="topic_nasdaq">NASDAQ</string>
+    <string name="topic_spx">SPX/S&P500</string>
+    <string name="topic_dow">Dow Jones</string>
+    <string name="topic_ipo">IPO</string>
+    <string name="topic_central_banks">Central Banks</string>
+    <string name="topic_economy">Economy</string>
+    <string name="topic_politics">Politics</string>
+    <string name="topic_crypto">Crypto</string>
+    <string name="topic_market_crash">Market Crash</string>
+    <string name="topic_bailout">Bailout/Stimulus</string>
+    <string name="topic_china">China</string>
 </resources>

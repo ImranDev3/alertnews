@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <!-- Notifications Section -->
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/settings_notifications_section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/notifications_section"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switchNotifications"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/enable_notifications"
+            app:layout_constraintTop_toBottomOf="@id/settings_notifications_section"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switchHighImpact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/high_impact_alerts"
+            app:layout_constraintTop_toBottomOf="@id/switchNotifications"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!-- Appearance Section -->
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/settings_appearance_section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/appearance_section"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintTop_toBottomOf="@id/switchHighImpact"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switchDarkMode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dark_mode"
+            app:layout_constraintTop_toBottomOf="@id/settings_appearance_section"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switchMarketSessions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/show_market_sessions"
+            app:layout_constraintTop_toBottomOf="@id/switchDarkMode"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!-- Music Section -->
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/settings_music_section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/music_section"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintTop_toBottomOf="@id/switchMarketSessions"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switchMusic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/enable_music"
+            app:layout_constraintTop_toBottomOf="@id/settings_music_section"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <SeekBar
+            android:id="@+id/seekBarVolume"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/switchMusic"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etMusicUrl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/music_url_hint"
+            app:layout_constraintTop_toBottomOf="@id/seekBarVolume"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp" />
+
+        <!-- Filters Section -->
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/settings_filters_section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/filters_section"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintTop_toBottomOf="@id/etMusicUrl"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etSymbols"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/symbol_filter_hint"
+            app:layout_constraintTop_toBottomOf="@id/settings_filters_section"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etCurrencies"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/currency_filter_hint"
+            app:layout_constraintTop_toBottomOf="@id/etSymbols"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switchFavorites"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/show_favorites_only"
+            app:layout_constraintTop_toBottomOf="@id/etCurrencies"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etAutoRefresh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/auto_refresh_desc"
+            app:layout_constraintTop_toBottomOf="@id/switchFavorites"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSaveFilters"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/save_filters"
+            app:layout_constraintTop_toBottomOf="@id/etAutoRefresh"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="12dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnClearCache"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/clear_cache"
+            app:layout_constraintTop_toBottomOf="@id/etAutoRefresh"
+            app:layout_constraintStart_toEndOf="@id/btnSaveFilters"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="8dp" />
+
+        <!-- Timezone Section -->
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/settings_timezone_section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/timezone"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintTop_toBottomOf="@id/btnClearCache"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/spinnerTimezone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/settings_timezone_section"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="16dp" />
+
+        <!-- Topic Filtering Section -->
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/settings_topics_section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/topic_alerts"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintTop_toBottomOf="@id/spinnerTimezone"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/settings_topics_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/topic_alerts_desc"
+            android:textSize="12sp"
+            android:textColor="@color/textSecondary"
+            app:layout_constraintTop_toBottomOf="@id/settings_topics_section"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/topicRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/settings_topics_desc"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Contact Section -->
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/settings_contact_section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/open_source_notice"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintTop_toBottomOf="@id/topicRecycler"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvContactEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/contact_email"
+            android:textSize="13sp"
+            app:layout_constraintTop_toBottomOf="@id/settings_contact_section"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginBottom="4dp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvGithubRepo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/github_repo"
+            android:textSize="13sp"
+            app:layout_constraintTop_toBottomOf="@id/tvContactEmail"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginBottom="24dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

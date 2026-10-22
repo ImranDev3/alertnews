@@ -5,14 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.alertnews.app.R
-import com.alertnews.app.adapters.IpoAdapter
-import com.alertnews.app.viewmodels.NewsViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.snackbar.Snackbar
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.alertnews.app.R
+import com.alertnews.app.adapters.IpoAdapter
 import com.alertnews.app.databinding.FragmentIpoBinding
+import com.alertnews.app.viewmodels.NewsViewModel
 
 class IpoFragment : Fragment() {
 
